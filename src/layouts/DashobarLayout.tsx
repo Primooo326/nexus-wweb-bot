@@ -21,8 +21,8 @@ export default function DashobarLayout({ children }: Readonly<{ children: React.
             if (token) {
                 const { payload } = await verifyJwt(token);
                 console.log(payload);
-                const { correo, nombre, uuid, telefono } = payload as any;
-                setUser({ correo, nombre, uuid, telefono });
+                const { correo, nombre, uuid, telefono, status, sessionId } = payload as any;
+                setUser({ correo, nombre, uuid, telefono, status, sessionId });
                 socket.emit('authenticate', uuid)
             }
         } catch (error) {
@@ -43,9 +43,12 @@ export default function DashobarLayout({ children }: Readonly<{ children: React.
     }, [socket]);
 
     return (
-        <main data-theme={dataTheme} className="p-4 sm:p-8">
-            {children}
+        <main data-theme={dataTheme} className="flex w-screen h-screen overflow-hidden">
             <Drawer />
+            <div className="flex flex-col gap-4 p-4 sm:p-8 w-full">
+
+                {children}
+            </div>
             <ToastContainer />
         </main>
     )

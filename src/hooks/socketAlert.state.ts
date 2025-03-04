@@ -34,7 +34,7 @@ const useSocketStore = create<SocketState>((set) => ({
         socket.on("connect", () => {
             set({ status: true })
             console.log("Socket conectado con ID:", socket.id);
-            toast.success("Conectado al servidor");
+            // toast.success("Conectado al servidor");
         });
 
         socket.on("disconnect", (reason) => {

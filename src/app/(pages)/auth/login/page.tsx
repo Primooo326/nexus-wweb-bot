@@ -35,7 +35,7 @@ export default function page() {
             Cookies.set('token', token)
             setUser(user)
             toast.success(message)
-            router.push('/dashboard/wweb-bot')
+            router.push('/dashboard/bots')
         }).catch((error) => {
             console.log(error);
         })

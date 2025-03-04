@@ -1,9 +1,9 @@
-import { IUser } from "@/models/IUser";
+import { IUsuario } from "@/models/IUsuario";
 import { create } from "zustand";
 
 interface IAppState {
-    user: IUser | null;
-    setUser: (user: IUser | null) => void;
+    user: IUsuario | null;
+    setUser: (user: IUsuario | null) => void;
 
     sessionId: string | null;
     setSessionId: (sessionId: string | null) => void;
