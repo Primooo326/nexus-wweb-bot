@@ -11,11 +11,10 @@ export default function page() {
     const router = useRouter();
     const { register, handleSubmit, formState: { errors } } = useForm({
         defaultValues: {
-            correo: '',
-            contraseña: '',
+            email: '',
+            password: '',
             contraseñaConfirmacion: '',
-            nombre: '',
-            telefono: ''
+            username: '',
         }
     })
 
@@ -23,7 +22,7 @@ export default function page() {
     const [isLoading, setIsLoading] = useState(false)
     const onSubmit = (data: any) => {
 
-        if (data.contraseña !== data.contraseñaConfirmacion) {
+        if (data.password !== data.contraseñaConfirmacion) {
             toast.error('Las contraseñas no coinciden')
             return
         }
@@ -47,7 +46,7 @@ export default function page() {
                     <input type="text"
                         className="grow"
                         placeholder="Nombre"
-                        {...register('nombre', {
+                        {...register('username', {
                             required: true,
                             minLength: {
                                 value: 3,
@@ -56,24 +55,7 @@ export default function page() {
                         })}
                     />
                     <p className="validator-hint">
-                        {errors.nombre?.message}
-                    </p>
-                </label>
-                <label className="input validator">
-                    <DynamicIcon icon="line-md:phone" className="text-xl" />
-                    <input type="text"
-                        className="grow"
-                        placeholder="Telefono"
-                        {...register('telefono', {
-                            required: true,
-                            minLength: {
-                                value: 10,
-                                message: 'El telefono debe tener al menos 10 caracteres'
-                            }
-                        })}
-                    />
-                    <p className="validator-hint">
-                        {errors.telefono?.message}
+                        {errors.username?.message}
                     </p>
                 </label>
                 <label className="input validator">
@@ -81,7 +63,7 @@ export default function page() {
                     <input type="text"
                         className="grow"
                         placeholder="Correo"
-                        {...register('correo', {
+                        {...register('email', {
                             required: true,
                             pattern: {
                                 value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
@@ -90,7 +72,7 @@ export default function page() {
                         })}
                     />
                     <p className="validator-hint">
-                        {errors.correo?.message}
+                        {errors.email?.message}
                     </p>
                 </label>
                 <label className="input validator">
@@ -98,7 +80,7 @@ export default function page() {
                     <input type={showPassword ? 'text' : 'password'}
                         className="grow"
                         placeholder="Contraseña"
-                        {...register('contraseña', {
+                        {...register('password', {
                             required: true,
                             minLength: {
                                 value: 6,
@@ -107,7 +89,7 @@ export default function page() {
                         })}
                     />
                     <p className="validator-hint">
-                        {errors.contraseña?.message}
+                        {errors.password?.message}
                     </p>
                 </label>
                 <label className="input validator">
