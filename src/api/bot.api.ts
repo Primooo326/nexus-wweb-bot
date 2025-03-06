@@ -1,8 +1,12 @@
-import { IBot } from '@/models/IBot';
+import { IBot } from "@/models/app.model";
 import { fetchApi } from "./instances";
 
 export const getBots = async (): Promise<IBot[]> => {
     return fetchApi.get('/bots');
+}
+
+export const getBotsByUser = async (uuid: string): Promise<IBot[]> => {
+    return fetchApi.get(`/bots/user/${uuid}`);
 }
 
 export const getBot = async (uuid: string): Promise<IBot> => {

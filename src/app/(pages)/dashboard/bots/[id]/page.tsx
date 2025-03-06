@@ -1,5 +1,4 @@
 "use client";
-import { getJobsByBot } from '@/api/jobsMessages';
 import { useParams } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 import DataTable from 'react-data-table-component';
@@ -18,9 +17,7 @@ export default function page() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const fetchData = async () => {
 
-        const jobsBot = await getJobsByBot(id as string)
-        setData(jobsBot)
-        console.log(jobsBot);
+        console.log(id);
 
     }
 

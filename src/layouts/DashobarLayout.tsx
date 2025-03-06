@@ -19,11 +19,10 @@ export default function DashobarLayout({ children }: Readonly<{ children: React.
         try {
             const token = Cookies.get('token');
             if (token) {
-                const { payload } = await verifyJwt(token);
+                const { payload }: any = await verifyJwt(token);
                 console.log(payload);
-                const { correo, nombre, uuid, telefono, status, sessionId } = payload as any;
-                setUser({ correo, nombre, uuid, telefono, status, sessionId });
-                socket.emit('authenticate', uuid)
+                setUser({ ...payload });
+                socket.emit('authenticate', payload.id)
             }
         } catch (error) {
             console.log(error);
